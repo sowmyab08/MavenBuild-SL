@@ -16,3 +16,4 @@ jobs:
           cache: 'maven'
       - name: Build the source code
         run: mvn package
+

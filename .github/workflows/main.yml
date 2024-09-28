@@ -26,16 +26,7 @@ jobs:
           port: 22
           connect_timeout: 10s
 
-          ## Giving the permission for copying the wat file to webapps directory
+          ## Trigger the Jenkins Job from GitHub Actions
           first_ssh: |
-             sudo chmod 777 /var/lib/tomcat9/webapps
-
-          ## Move the war file to webapps directory
-          scp: |
-             './target/*war' => /var/lib/tomcat9/webapps
-
-          ## Restart tomcat to automatically expand and deploy the application
-          last_ssh: |
-             sudo systemctl restart tomcat9
-
+             sudo curl -l -u admin:1199d45265299b55ebede198ca2b101643 http://localhost:8080/job/GitHubActions/build?token=token2
       
